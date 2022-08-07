@@ -19,7 +19,22 @@ const thoughtSchema = new Schema(
             type: String,
             required: true
         },
-        
-
+        reactions: []
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
     }
-)
+);
+
+thoughtSchema.virtual('reactionCount')
+    .get(function() {
+        return this.reactions.length
+    });
+
+const Thought = model('thought', thoughtSchema);
+
+module.exports = Thought
