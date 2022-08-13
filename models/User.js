@@ -1,21 +1,22 @@
 const { Schema, model, Types } = require('mongoose');
-import emailVal from '../helpers/validateEmail'
+const Thought = require('./Thought');
 
 const userSchema = new Schema(
     {
         username: {
             type: String,
             unique: true,
-            required: "Username is required",
+            required: true,
             trim: true
         },
         email: {
            type: String,
-           required: "Email is required",
+           required: true,
            unique: true,
-           validate: [emailVal, 'Please fill a valid email address'],
-           match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
-
+           match: [
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
+           'Please fill a valid email address'
+        ]
         },
         thoughts: [
             {

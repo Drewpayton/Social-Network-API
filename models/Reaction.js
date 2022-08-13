@@ -1,11 +1,11 @@
-const { Schema } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const moment = require('moment');
 
 const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: () => new ObjectId()
+            default: () => new Types.ObjectId()
         },
         reactionBody: {
             type: String,
@@ -24,6 +24,7 @@ const reactionSchema = new Schema(
     },
     {
         toJSON: {
+            virtuals: true,
             getters: true
         },
         id: false

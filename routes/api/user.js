@@ -12,9 +12,7 @@ const {
 
 
 // The route to get all users and create a post
-router.route('/')
-    .get(getUser)
-    .post(createUser);
+router.route('/').get(getUser).post(createUser);
 
 
 router.route('/:userId')

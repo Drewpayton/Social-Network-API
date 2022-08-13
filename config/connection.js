@@ -1,10 +1,13 @@
 const { connect, connection } = require('mongoose');
+require('dotenv').config()
+const username = process.env.NAME
+const password = process.env.PASS
 
-const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/socialnetworkDB';
+const connectionString = `mongodb+srv://${username}:${password}@cluster0.pg2foxl.mongodb.net/test`;
 
 connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 module.exports = connection;
